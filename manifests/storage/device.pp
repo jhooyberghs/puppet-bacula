@@ -8,10 +8,11 @@ define bacula::storage::device (
   $media_type     = 'File',
   $maxconcurjobs  = '5',
   $concat_order   = '05',
-  $device_owner   = $bacula::params::bacula_user,
-  $group          = $bacula::params::bacula_group,
   $port           = '9103',
   $password       = 'secret',
+  $device_owner   = $bacula::params::bacula_user,
+  $group          = $bacula::params::bacula_group,
+  $conf_dir       = $bacula::params::conf_dir,
 ) {
 
   include bacula::params

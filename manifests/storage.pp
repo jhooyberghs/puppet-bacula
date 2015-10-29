@@ -48,6 +48,7 @@ class bacula::storage (
     maxconcurjobs => $maxconcurjobs,
     device_owner  => $device_owner,
     group         => $group,
+    conf_dir      => $conf_dir,
     require       => Package[$packages],
   }
 
