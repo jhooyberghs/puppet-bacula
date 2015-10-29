@@ -20,6 +20,7 @@
 define bacula::director::storage (
   $port          = '9103',
   $password      = 'secret',
+  $storage       = "${::fqdn}",
   $device_name   = "${::fqdn}-device",
   $media_type    = 'File',
   $maxconcurjobs = '1',
