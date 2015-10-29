@@ -41,6 +41,18 @@ class bacula::storage (
     content => template('bacula/bacula-sd-header.erb'),
   }
 
+  bacula::storage::device { $storage:
+    device_name   => $device_name,
+    device        => $device,
+    storage       => $storage,
+    media_type    => $media_type,
+    concat_order  => '01',
+    maxconcurjobs => $maxconcurjobs,
+    device_owner  => $device_owner,
+    group         => $group,
+    require       => Package[$packages],
+  }
+
   concat::fragment { 'bacula-storage-dir':
     target  => "${conf_dir}/bacula-sd.conf",
     content => template('bacula/bacula-sd-dir.erb'),
@@ -64,21 +76,4 @@ class bacula::storage (
     notify => Service[$services],
   }
 
-  if $media_type == 'File' {
-    file { $device:
-      ensure  => directory,
-      owner   => $device_owner,
-      group   => $group,
-      mode    => '0770',
-      require => Package[$packages],
-    }
-  }
-
-  @@bacula::director::storage { $storage:
-    port          => $port,
-    password      => $password,
-    device_name   => $device_name,
-    media_type    => $media_type,
-    maxconcurjobs => $maxconcurjobs,
-  }
 }
