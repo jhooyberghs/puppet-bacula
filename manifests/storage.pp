@@ -44,6 +44,7 @@ class bacula::storage (
   bacula::storage::device { $device_name:
     device        => $device,
     media_type    => $media_type,
+    password      => $password,
     storage       => $storage,
     concat_order  => '01',
     maxconcurjobs => $maxconcurjobs,
