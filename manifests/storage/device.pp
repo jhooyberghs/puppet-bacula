@@ -4,7 +4,6 @@
 # This define creates a device declartion for the storage daemon.
 #
 define bacula::storage::device (
-  $device_name,
   $device,
   $media_type     = 'File',
   $maxconcurjobs  = '5',
@@ -35,7 +34,7 @@ define bacula::storage::device (
   @@bacula::director::storage { $name:
     port          => $port,
     password      => $password,
-    device_name   => $device_name,
+    device_name   => $name,
     media_type    => $media_type,
     maxconcurjobs => $maxconcurjobs,
   }

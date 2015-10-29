@@ -36,15 +36,13 @@ class bacula::storage (
   }
 
   concat::fragment { 'bacula-storage-header':
-    order   => 00,
+    order   => '00',
     target  => "${conf_dir}/bacula-sd.conf",
     content => template('bacula/bacula-sd-header.erb'),
   }
 
-  bacula::storage::device { $storage:
-    device_name   => $device_name,
+  bacula::storage::device { $device_name:
     device        => $device,
-    storage       => $storage,
     media_type    => $media_type,
     concat_order  => '01',
     maxconcurjobs => $maxconcurjobs,
