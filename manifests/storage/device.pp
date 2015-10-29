@@ -5,6 +5,7 @@
 #
 define bacula::storage::device (
   $device,
+  $storage,
   $media_type     = 'File',
   $maxconcurjobs  = '5',
   $concat_order   = '05',
@@ -33,6 +34,7 @@ define bacula::storage::device (
   }
 
   @@bacula::director::storage { $name:
+    storage       => $storage,
     port          => $port,
     password      => $password,
     device_name   => $name,
