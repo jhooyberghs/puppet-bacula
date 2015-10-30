@@ -20,7 +20,7 @@ class bacula::params {
   }
 
   $storage          = hiera('bacula::params::storage', $::fqdn)
-  $storage_name     = hiera('bacula::params::storage_name', $::fqdn)
+  $storage_name     = hiera('bacula::params::storage_name', 'bacula::params::storage', $::fqdn)
   $director         = hiera('bacula::params::director', $::fqdn)
   $director_address = hiera('bacula::params::director_address', $director)
 
