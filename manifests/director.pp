@@ -31,6 +31,7 @@ class bacula::director (
   $director            = $::fqdn, # director here is not params::director
   $director_address    = $bacula::params::director_address,
   $storage             = $bacula::params::storage,
+  $storage_name        = $bacula::params::storage_name,
   $group               = $bacula::params::bacula_group,
 ) inherits bacula::params {
 
