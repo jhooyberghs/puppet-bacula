@@ -19,8 +19,8 @@ class bacula::params {
     $db_type        = hiera('bacula::params::db_type', 'pgsql')
   }
 
-  $storage          = hiera('bacula::params::storage', "$::fqdn)
-  $storage_address  = hiera('bacula::params::storage_address', "$::fqdn)
+  $storage          = hiera('bacula::params::storage', $::fqdn)
+  $storage_address  = hiera('bacula::params::storage_address', $::fqdn)
   $director         = hiera('bacula::params::director', $::fqdn)
   $director_address = hiera('bacula::params::director_address', $director)
 
