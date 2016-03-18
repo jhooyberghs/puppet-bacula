@@ -12,6 +12,7 @@ define bacula::storage::device (
   $concat_order   = '05',
   $port           = '9103',
   $device_manage  = false,
+  $device_mode    = '0770',
   $device_owner   = $bacula::params::bacula_user,
   $group          = $bacula::params::bacula_group,
   $conf_dir       = $bacula::params::conf_dir,
@@ -30,7 +31,7 @@ define bacula::storage::device (
       ensure => directory,
       owner  => $device_owner,
       group  => $group,
-      mode   => '0770',
+      mode   => $device_mode,
     }
   }
 

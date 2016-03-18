@@ -51,6 +51,7 @@ class bacula::storage (
     concat_order  => '01',
     maxconcurjobs => $maxconcurjobs,
 		device_manage => $device_manage,
+		device_mode   => $device_mode,
     device_owner  => $device_owner,
     group         => $group,
     conf_dir      => $conf_dir,
