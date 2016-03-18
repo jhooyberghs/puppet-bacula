@@ -11,6 +11,7 @@ define bacula::storage::device (
   $maxconcurjobs  = '5',
   $concat_order   = '05',
   $port           = '9103',
+  $device_manage  = false,
   $device_owner   = $bacula::params::bacula_user,
   $group          = $bacula::params::bacula_group,
   $conf_dir       = $bacula::params::conf_dir,
@@ -24,7 +25,7 @@ define bacula::storage::device (
     content => template('bacula/bacula-sd-device.erb'),
   }
 
-  if $media_type == 'File' {
+  if $device_manage {
     file { $device:
       ensure => directory,
       owner  => $device_owner,
