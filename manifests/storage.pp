@@ -8,7 +8,7 @@ class bacula::storage (
   $storage                 = $::fqdn, # storage here is not params::storage
   $password                = 'secret',
   $device                  = '/bacula',
-  $device_create           = true,
+  $device_manage           = false,
   $device_name             = "${::fqdn}-device",
   $device_owner            = $bacula::params::bacula_user,
   $media_type              = 'File',
@@ -65,7 +65,7 @@ class bacula::storage (
     notify => Service[$services],
   }
 
-  if $device_create {
+  if $device_manage {
     file { $device:
       ensure  => directory,
       owner   => $device_owner,
