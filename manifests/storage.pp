@@ -9,6 +9,7 @@ class bacula::storage (
   $password                = 'secret',
   $device                  = '/bacula',
   $device_manage           = false,
+  $device_mode             = '0770',
   $device_name             = "${::fqdn}-device",
   $device_owner            = $bacula::params::bacula_user,
   $media_type              = 'File',
