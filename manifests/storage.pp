@@ -7,9 +7,9 @@ class bacula::storage (
   $listen_address          = $::ipaddress,
   $storage                 = $::fqdn, # storage here is not params::storage
   $password                = 'secret',
-  $device_name             = "${::fqdn}-device",
   $device                  = '/bacula',
-  $device_mode             = '0770',
+  $device_create           = true,
+  $device_name             = "${::fqdn}-device",
   $device_owner            = $bacula::params::bacula_user,
   $media_type              = 'File',
   $maxconcurjobs           = '5',
@@ -65,7 +65,7 @@ class bacula::storage (
     notify => Service[$services],
   }
 
-  if $media_type == 'File' {
+  if $device_create {
     file { $device:
       ensure  => directory,
       owner   => $device_owner,
