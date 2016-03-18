@@ -13,13 +13,17 @@
 # Parameters:
 # *  port         - Bacula director configuration for Storage option 'SDPort'
 # *  password     - Bacula director configuration for Storage option 'Password'
+# *  storage_addr - Bacula director configuration for Storage option 'Address'
+# *  storage_name - Bacula director configuration for Storage option 'Name'
 # *  device_name  - Bacula director configuration for Storage option 'Device'
 # *  media_type   - Bacula director configuration for Storage option 'Media Type'
-# *  maxconcurjob - Bacula director configuration for Storage option 'Media Type'
+# *  maxconcurjob - Bacula director configuration for Storage option 'Maximum Concurrent Jobs'
 #
 define bacula::director::storage (
   $port          = '9103',
   $password      = 'secret',
+  $storage       = "${::fqdn}",
+  $storage_name  = "${::fqdn}",
   $device_name   = "${::fqdn}-device",
   $media_type    = 'File',
   $maxconcurjobs = '1',
