@@ -16,13 +16,19 @@ Job {
 <%   end -%>
 <% elsif @jobtype == "Backup" -%>
 <% if @pool_full -%>
-    Full Backup Pool        = <%= scope.lookupvar('bacula::params::storage') %>-Pool-Full
+    Full Backup Pool        = <%= @pool_full %>
+<% else -%>
+  Full Backup Pool        = <%= scope.lookupvar('bacula::params::storage') %>-Pool-Full
 <% end -%>
 <% if @pool_inc -%>
-    Incremental Backup Pool  = <%= scope.lookupvar('bacula::params::storage') %>-Pool-Inc
+  Incremental Backup Pool  = <%= @pool_inc %>
+<% else -%>
+  Incremental Backup Pool  = <%= scope.lookupvar('bacula::params::storage') %>-Pool-Inc
 <% end -%>
 <% if @pool_diff -%>
-    Differential Backup Pool = <%= scope.lookupvar('bacula::params::bacula_storage') %>-Pool-Diff
+  Differential Backup Pool = <%= @pool_diff %>
+<% else -%>
+  Differential Backup Pool = <%= scope.lookupvar('bacula::params::bacula_storage') %>-Pool-Diff
 <% end -%>
 <% end -%>
 
