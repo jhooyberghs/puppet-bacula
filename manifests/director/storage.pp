@@ -24,7 +24,7 @@ define bacula::director::storage (
   $password      = 'secret',
   $storage       = "${::fqdn}",
   $storage_name  = $name,
-  $device_name   = "${::fqdn}-device",
+  $device_name   = "${::fqdn}",
   $media_type    = 'File',
   $maxconcurjobs = '1',
   $conf_dir      = $bacula::params::conf_dir, # Overridden at realize
